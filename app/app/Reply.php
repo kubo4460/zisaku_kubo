@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class replies extends Model
+class Reply extends Model
 {
     //
 }

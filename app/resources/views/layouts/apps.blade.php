@@ -29,6 +29,9 @@
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>
+                <div class="text-center">
+                    <a href="{{ route('home') }}" class="text-secondary">HOME</a></li>
+                </div>
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
@@ -81,7 +84,8 @@
             @yield('content')
         </main>
 
-
+        <a href="{{ route('information.create') }}" class="text-secondary pt-5">お問い合わせ</a></li>
+        @yield('footer')
     </div>
 </body>
 </html>

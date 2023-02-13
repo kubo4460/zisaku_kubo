@@ -15,7 +15,7 @@ class CreateInformationTable extends Migration
     {
         Schema::create('information', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('user_id');
+            $table->integer('user_id')->nullable();
             $table->string('inquiry');
             $table->tinyInteger('type');
             $table->timestamps();

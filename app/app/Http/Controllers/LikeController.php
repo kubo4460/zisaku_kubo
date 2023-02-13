@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\orders;
+use App\Like;
 use Illuminate\Http\Request;
 
-class ordersController extends Controller
+class LikeController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -41,10 +41,10 @@ class ordersController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\orders  $orders
+     * @param  \App\Like  $like
      * @return \Illuminate\Http\Response
      */
-    public function show(orders $orders)
+    public function show(Like $like)
     {
         //
     }
@@ -52,10 +52,10 @@ class ordersController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\orders  $orders
+     * @param  \App\Like  $like
      * @return \Illuminate\Http\Response
      */
-    public function edit(orders $orders)
+    public function edit(Like $like)
     {
         //
     }
@@ -64,10 +64,10 @@ class ordersController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\orders  $orders
+     * @param  \App\Like  $like
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, orders $orders)
+    public function update(Request $request, Like $like)
     {
         //
     }
@@ -75,10 +75,10 @@ class ordersController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\orders  $orders
+     * @param  \App\Like  $like
      * @return \Illuminate\Http\Response
      */
-    public function destroy(orders $orders)
+    public function destroy(Like $like)
     {
         //
     }

@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\replies;
+use App\Cart;
 use Illuminate\Http\Request;
 
-class repliesController extends Controller
+class CartController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -41,10 +41,10 @@ class repliesController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\replies  $replies
+     * @param  \App\Cart  $cart
      * @return \Illuminate\Http\Response
      */
-    public function show(replies $replies)
+    public function show(Cart $cart)
     {
         //
     }
@@ -52,10 +52,10 @@ class repliesController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\replies  $replies
+     * @param  \App\Cart  $cart
      * @return \Illuminate\Http\Response
      */
-    public function edit(replies $replies)
+    public function edit(Cart $cart)
     {
         //
     }
@@ -64,10 +64,10 @@ class repliesController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\replies  $replies
+     * @param  \App\Cart  $cart
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, replies $replies)
+    public function update(Request $request, Cart $cart)
     {
         //
     }
@@ -75,10 +75,10 @@ class repliesController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\replies  $replies
+     * @param  \App\Cart  $cart
      * @return \Illuminate\Http\Response
      */
-    public function destroy(replies $replies)
+    public function destroy(Cart $cart)
     {
         //
     }

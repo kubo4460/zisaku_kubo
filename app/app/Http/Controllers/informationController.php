@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\information;
+use App\Information;
 use Illuminate\Http\Request;
 
-class informationController extends Controller
+use Illuminate\Support\Facades\Auth;
+
+class InformationController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +16,7 @@ class informationController extends Controller
      */
     public function index()
     {
-        //
+        return view('information_confirm');
     }
 
     /**
@@ -24,7 +26,7 @@ class informationController extends Controller
      */
     public function create()
     {
-        //
+        return view('information');
     }
 
     /**
@@ -33,18 +35,30 @@ class informationController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, Information $information)
     {
-        //
+        $information = new Information;
+
+        // $columns = ['user_id', 'type', 'inquiry'];
+        // foreach ($columns as $column) {
+        //     $information->$column = $request->$column;
+        // }
+        $information->user_id=Auth::id();
+        $information->inquiry=$request->inquiry;
+        $information->type=$request->customRadio;
+
+        $information->save();
+
+        return view('information_complete');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\information  $information
+     * @param  \App\Information  $information
      * @return \Illuminate\Http\Response
      */
-    public function show(information $information)
+    public function show(Information $information)
     {
         //
     }
@@ -52,10 +66,10 @@ class informationController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\information  $information
+     * @param  \App\Information  $information
      * @return \Illuminate\Http\Response
      */
-    public function edit(information $information)
+    public function edit(Information $information)
     {
         //
     }
@@ -64,10 +78,10 @@ class informationController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\information  $information
+     * @param  \App\Information  $information
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, information $information)
+    public function update(Request $request, Information $information)
     {
         //
     }
@@ -75,10 +89,10 @@ class informationController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\information  $information
+     * @param  \App\Information  $information
      * @return \Illuminate\Http\Response
      */
-    public function destroy(information $information)
+    public function destroy(Information $information)
     {
         //
     }

@@ -2,10 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\carts;
 use Illuminate\Http\Request;
 
-class cartsController extends Controller
+use App\User;
+
+
+
+
+class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -24,7 +28,7 @@ class cartsController extends Controller
      */
     public function create()
     {
-        //
+        return view('account_addresses',compact('user'));
     }
 
     /**
@@ -35,51 +39,71 @@ class cartsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // $user = new User;
+
+        // $columns = ['name', 'post', 'address', 'email','tel'];
+        // foreach($columns as $column) {
+        //     $user->$column = $request->$column;
+        // }
+
+        // $user->save();
+        
+        // return redirect()->route('home');
+        
     }
+    
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\carts  $carts
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(carts $carts)
+    public function show(User $user)
     {
-        //
+        return view('account',compact('user'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\carts  $carts
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(carts $carts)
+    public function edit(User $user)
     {
-        //
+        return view('account_addresses',compact('user'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\carts  $carts
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, carts $carts)
+    public function update(Request $request, User $user)
     {
-        //
+        $user->name=$request->name;
+        $user->post=$request->post;
+        $user->address=$request->address;
+        $user->tel=$request->tel;
+
+        $user->save();
+        return view('account', compact('user'));
+        
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\carts  $carts
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(carts $carts)
+    public function destroy(User $user)
     {
-        //
+        $user->delete();
+        
+        return redirect()->route('home');
     }
 }
