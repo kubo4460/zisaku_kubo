@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Account;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class AccountController extends Controller
 {
@@ -34,17 +35,18 @@ class AccountController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, Account $account)
+    public function store(Request $request)
     {
-        // $account->user_id=$request->user_id;
-        // $account->name=$request->name;
-        // $account->post=$request->post;
-        // $account->address=$request->address;
-        // $account->tel=$request->tel;
+        $account = new Account;
+        $account->user_id=Auth::id();
+        $account->name=$request->name;
+        $account->post=$request->post;
+        $account->address=$request->address;
+        $account->tel=$request->tel;
 
-        // $account->save();
+        $account->save();
 
-        return view('home');
+        return redirect()->route('users.edit',Auth::id());
 
     }
 
