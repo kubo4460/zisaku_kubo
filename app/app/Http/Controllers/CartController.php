@@ -2,11 +2,46 @@
 
 namespace App\Http\Controllers;
 
-use App\Cart;
+use App\Cart as CartModel;
+use App\Product;
 use Illuminate\Http\Request;
+use Gloudemans\Shoppingcart\Facades\Cart;
 
 class CartController extends Controller
 {
+    public function productToCart($product_id) {
+
+        $product = new Product;
+        $product = Product::findOrFail($product_id);
+
+        Cart::add([
+            [
+                'id' => $product->id,
+                'name' => $product->title,
+                'qty' => '1',
+                'price' => $product->price,
+                'weight' => '1',
+                'options' => ['path'=>$product->image_path, 'size' =>'large','medium','small']
+                ]
+            ]);
+        
+        return redirect('/cart');
+    }
+    public function reset() {
+        Cart::destroy();
+        return redirect('/cart');
+    }
+
+    public function remove($rowId) {
+        Cart::remove($rowId);
+        return redirect('/cart');
+    }
+    public function ToCart() {
+
+        $carts = Cart::content();
+        return view('cart_customer',compact('carts'));
+    }
+
     /**
      * Display a listing of the resource.
      *

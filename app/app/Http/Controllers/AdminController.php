@@ -2,14 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Admin;
 use Illuminate\Http\Request;
-
+use App\Product;
 use App\User;
 
 
-
-
-class UserController extends Controller
+class AdminController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,8 +17,19 @@ class UserController extends Controller
      */
     public function index()
     {
-        return view('home');
+        return view('admin_register');
     }
+
+    public function adminuser()
+    {
+        $users = User::all();
+        return view('admin_user_list',compact('users'));
+    }
+    public function adminitem()
+    {
+        return view('admin_item_list');
+    }
+
 
     /**
      * Show the form for creating a new resource.
@@ -28,7 +38,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('account_addresses',compact('user'));
+        //
     }
 
     /**
@@ -39,61 +49,52 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        return view('home');
+        $product = new Product;
+
     }
-    
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Admin  $admin
      * @return \Illuminate\Http\Response
      */
-    public function show(User $user)
+    public function show(Admin $admin)
     {
-        return view('accounts',compact('user'));
+
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Admin  $admin
      * @return \Illuminate\Http\Response
      */
-    public function edit(User $user)
+    public function edit(Admin $admin)
     {
-        return view('account_addresses',compact('user'));
+        //
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Admin  $admin
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, User $user)
+    public function update(Request $request, Admin $admin)
     {
-        // $user->name=$request->name;
-        // $user->post=$request->post;
-        // $user->address=$request->address;
-        // $user->tel=$request->tel;
-
-        // $user->save();
-        // return view('accounts', compact('user'));
-        
+        //
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Admin  $admin
      * @return \Illuminate\Http\Response
      */
-    public function destroy(User $user)
+    public function destroy(Admin $admin)
     {
-        $user->delete();
-        
-        return redirect()->route('home');
+        //
     }
 }

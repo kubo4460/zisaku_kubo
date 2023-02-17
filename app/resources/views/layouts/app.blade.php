@@ -47,6 +47,9 @@
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ route('register') }}">{{ __('新規会員登録') }}</a>
                                 </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('admin.index') }}">{{ __('管理者新規会員登録') }}</a>
+                                </li>
                             @endif
                         @else
                             <li class="nav-item dropdown">

@@ -16,6 +16,14 @@ class ProductController extends Controller
     {
         //
     }
+    public function productdetail($id)
+    {
+
+        $product = Product::find($id);
+
+        return view('product_detail',compact('product'));
+    }
+
 
     /**
      * Show the form for creating a new resource.
@@ -35,9 +43,31 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
-    }
+        $product = new Product;
 
+        $file = $request->file('image_path')->getClientOriginalName();
+        $file=$request->file('image_path')->store('public/image');
+        $file = str_replace('public/image/','',$file);
+
+
+        Product::create([
+
+            'title' => $request->title,
+
+            'description' => $request->description,
+
+            'image_path' => $file,
+
+            'price' => $request->price,
+
+            'stock' => $request->stock,
+
+            'size' => $request->size,
+
+        ]);
+
+        return redirect()->route('home');
+    }
     /**
      * Display the specified resource.
      *

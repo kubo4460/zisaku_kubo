@@ -57,9 +57,7 @@
                                     {{ Auth::user()->name }} <span class="caret"></span>
                                 </a>
 
-                                <a href="{{ route('cart.show') }}">
-                                    カート
-                                </a>
+
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{ route('users.show', Auth::user()->id) }}">
@@ -85,6 +83,7 @@
         <main class="py-4">
             @yield('content')
         </main>
+
         <a href="{{ route('information.create') }}" class="text-secondary pt-5">お問い合わせ</a></li>
         @yield('footer')
     </div>
