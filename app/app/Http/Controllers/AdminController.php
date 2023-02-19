@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Account;
 use App\Admin;
 use Illuminate\Http\Request;
 use App\Product;
@@ -22,8 +23,8 @@ class AdminController extends Controller
 
     public function adminuser()
     {
-        $users = User::all();
-        return view('admin_user_list',compact('users'));
+        $accounts = Account::all();
+        return view('admin_user_list',compact('accounts'));
     }
     public function adminitem()
     {
@@ -49,8 +50,7 @@ class AdminController extends Controller
      */
     public function store(Request $request)
     {
-        $product = new Product;
-
+        //
     }
 
     /**

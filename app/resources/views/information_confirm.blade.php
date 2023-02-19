@@ -38,6 +38,6 @@
     </div>
     <div class="form-group row">
     <div class="col-sm-10 offset-sm-2">
-        <button type="submit" class="btn btn-primary">確認する</button>
+        <button type="submit" class="btn btn-primary">送信</button>
     </div>
 @endsection

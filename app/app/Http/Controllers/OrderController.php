@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Order;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class OrderController extends Controller
 {
@@ -33,9 +34,20 @@ class OrderController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, Order $order)
     {
-        //
+        // $order = new Order;
+
+
+        // $order->user_id=Auth::id();
+        // $order->quantity=$request->quantity;
+        // $order->product_id=$request->product_id;
+        // $order->size=$request->size;
+        // $order->price=$request->price;
+
+        // $order->save();
+        
+        // return view('cart_complete');
     }
 
     /**

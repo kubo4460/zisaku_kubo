@@ -14,11 +14,21 @@
 
 </div>
 @elsecan('user-higher') {{-- 一般ユーザーに表示される --}}
-@foreach ($products as $product) 
-<h2>{{$product['title']}}</h2>
-<a href="{{ route('product.detail',['id'=>$product['id']]) }}">
-<img src="{{ asset('storage/image/'.$product['image_path']) }}" width="150" height="200">
-</a>
-@endforeach
+<div class="container">
+    @foreach ($products as $product)
+    <div class="col d-flex">
+        <div class="row-5">
+            <div class="col text-center">
+                <a href="{{ route('product.detail',['id'=>$product['id']]) }}">
+                    <img src="{{ asset('storage/image/'.$product['image_path']) }}" width="200" height="200">
+                </a>
+                <h5>{{$product['title']}}</h5>
+            </div>
+        </div>
+        @endforeach
+    </div>
+</div>
+
+
 @endcan
 @endsection

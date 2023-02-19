@@ -101,6 +101,6 @@ class AccountController extends Controller
     {
         $account->delete();
 
-        return redirect()->route('home');
+        return redirect()->route('users.show',Auth::id());
     }
 }

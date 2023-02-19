@@ -5,9 +5,8 @@
 <div class="conrainer">
 <div class="card">
     <div class="card-body">
-        お問い合わせありがとうございました。
+        ご購入ありがとうございました。
     </div>
 </div>
 </div>
 @endsection
-

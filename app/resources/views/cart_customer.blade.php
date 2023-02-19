@@ -24,9 +24,9 @@
             <td class="uk-text-large" style="text-align:right;">合計（消費税込み）</td>
             <td class="uk-text-large">{{$total * 1.10}}円</td>
             <td>
-                <form action="/paymentComplete">
-                    <script src="https://checkout.stripe.com/checkout.js" class="stripe-button" data-key="{{ env('STRIPE_PUBLIC_KEY') }}" data-amount={{$total * 1.10}} data-name="" data-label="決済をする" data-description="Online shopping by Stripe" data-image="https://stripe.com/img/documentation/checkout/marketplace.png" data-locale="auto" data-currency="JPY">
-                    </script>
+                <form action="{{ route('order.store') }}" method="post">
+                @csrf
+                <button type="submit" class="btn btn-primary">決済</button>
                 </form>
             </td>
         </tr>

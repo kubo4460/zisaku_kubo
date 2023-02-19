@@ -17,10 +17,12 @@ use App\Http\Controllers\CartController;
 
 Auth::routes();
 Route::resource('admin', 'AdminController');
+
 Route::get('admin1', 'AdminController@adminuser')->name('admin.user');
 Route::get('admin2', 'AdminController@adminitem')->name('admin.item');
 Route::get('admin3', 'AdminController@adminuserlist')->name('admin.userlist');
 Route::get('/product/{id}', 'ProductController@productdetail')->name('product.detail');
+Route::get('search', 'ProductController@search')->name('search.add');
 
 //カート全削除
 Route::get('/cart/reset', 'CartController@reset');
@@ -28,9 +30,14 @@ Route::get('/cart/reset', 'CartController@reset');
 Route::get('/cart/remove/{rowId}', 'CartController@remove')->name('cart.destroy');
 Route::get('/productToCart/{product_id}', 'CartController@productToCart')->name('cart.add');
 Route::get('/cart', 'CartController@ToCart')->name('cart.show');
+Route::get('/', 'PostsController@index')->name('posts.index');
 
+//ログイン中のユーザーのみアクセス可能
+Route::group(['middleware' => ['auth']], function () {
+    //「ajaxlike.jsファイルのurl:'ルーティング'」に書くものと合わせる。
+    Route::post('ajaxlike', 'ProductController@ajaxlike')->name('product.ajaxlike');
 
-
+});
 
 
 Route::group(['middleware' => 'auth', 'can:user-higher'], function () {
@@ -40,6 +47,7 @@ Route::group(['middleware' => 'auth', 'can:user-higher'], function () {
     Route::resource('users', 'UserController');
     // Route::resource('account', 'AccountController');
     Route::resource('information', 'InformationController');
+    Route::resource('order', 'OrderController');
 });
 
 // 管理者以上
