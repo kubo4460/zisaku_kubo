@@ -88,7 +88,8 @@ class AccountController extends Controller
         $account->tel = $request->tel;
 
         $account->save();
-        return redirect()->route('users.edit',Auth::id());    }
+        return view('accounts', compact('account'));
+    }
 
     /**
      * Remove the specified resource from storage.
@@ -100,6 +101,6 @@ class AccountController extends Controller
     {
         $account->delete();
 
-        return redirect()->route('users.edit',Auth::id());
+        return redirect()->route('users.show',Auth::id());
     }
 }
