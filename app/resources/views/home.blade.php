@@ -16,17 +16,19 @@
 @elsecan('user-higher') {{-- 一般ユーザーに表示される --}}
 <div class="container d-flex flex-wrap">
     @foreach ($products as $product)
-    <div class="row-3">
-        <div class="col">
-            <div class="col text-center">
-                <a href="{{ route('product.detail', $product['id']) }}">
-                    <img src="{{ asset('storage/image/'.$product['image_path']) }}" width="200" height="200">
-                </a>
-                <h5>{{$product['title']}}</h5>
-            </div>
+    <div class="w-25">
+        <div class="col text-center p-4">
+            <a href="{{ route('product.detail', $product['id']) }}">
+                <img src="{{ asset('storage/image/'.$product['image_path']) }}" width="200" height="200">
+            </a>
+            <h5>{{$product['title']}}</h5>
         </div>
     </div>
     @endforeach
+</div>
+
+
+
 </div>
 
 
