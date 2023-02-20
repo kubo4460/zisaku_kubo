@@ -15,7 +15,7 @@ class OrderController extends Controller
      */
     public function index()
     {
-        //
+        return view('cart_complete');
     }
 
     /**
@@ -36,18 +36,16 @@ class OrderController extends Controller
      */
     public function store(Request $request, Order $order)
     {
-        // $order = new Order;
-
-
-        // $order->user_id=Auth::id();
-        // $order->quantity=$request->quantity;
-        // $order->product_id=$request->product_id;
-        // $order->size=$request->size;
-        // $order->price=$request->price;
-
-        // $order->save();
-        
-        // return view('cart_complete');
+        $columns = ['user_id', 'quantity', 'size', 'product_id', 'price'];
+        $count = count($request->user_id);
+        for ($i = 0; $i < $count; $i++) {
+            $order = new Order;
+            foreach ($columns as $column) {
+                $order->$column = $request[$column][$i];
+            }
+            $order->save();
+        }
+        return redirect('/order');
     }
 
     /**

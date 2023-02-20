@@ -14,7 +14,7 @@
             <td><img src="{{asset('storage/image/'.$cart->options->path)}}" width="150" height="150"></td>
             <td>{{$cart->name}}</td>
             <td>{{$cart->price}}円</td>
-            
+
             <td><a href="{{ route('cart.destroy',['rowId'=>$cart->rowId]) }}"><button class="uk-button uk-button-danger uk-button">削除</button></td>
         </tr>
         <?php $total +=  $cart->price ?>
@@ -25,8 +25,15 @@
             <td class="uk-text-large">{{$total * 1.10}}円</td>
             <td>
                 <form action="{{ route('order.store') }}" method="post">
-                @csrf
-                <button type="submit" class="btn btn-primary">決済</button>
+                    @csrf
+                    @foreach($carts as $cart)
+                    <input type="hidden" name="product_id[]" value="{{$cart->id}}">
+                    <input type="hidden" name="user_id[]" value="{{$cart->options->user_id}}">
+                    <input type="hidden" name="quantity[]" value="{{$cart->options->quantity}}">
+                    <input type="hidden" name="size[]" value="{{$cart->options->size}}">
+                    <input type="hidden" name="price[]" value="{{$cart->price}}">
+                    @endforeach
+                    <button type="submit" class="btn btn-primary">決済</button>
                 </form>
             </td>
         </tr>
@@ -35,7 +42,7 @@
             <td></td>
             <td>
             <td><a href="/cart/reset"><button class="uk-button uk-button-danger uk-button">カート全削除</button></a></td>
-            </td> 
+            </td>
         </tr>
     </tbody>
 </table>

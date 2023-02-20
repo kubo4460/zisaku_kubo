@@ -31,6 +31,7 @@ Route::get('/cart/remove/{rowId}', 'CartController@remove')->name('cart.destroy'
 Route::get('/productToCart/{product_id}', 'CartController@productToCart')->name('cart.add');
 Route::get('/cart', 'CartController@ToCart')->name('cart.show');
 Route::get('/', 'PostsController@index')->name('posts.index');
+Route::get('cart1', 'ProductController@cartstore')->name('cart.comp');
 
 //ログイン中のユーザーのみアクセス可能
 Route::group(['middleware' => ['auth']], function () {
@@ -60,3 +61,5 @@ Route::group(['middleware' => 'auth', 'can:admin-higher'], function () {
     Route::resource('information', 'InformationController');
     Route::resource('product', 'ProductController');
 });
+
+

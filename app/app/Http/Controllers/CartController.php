@@ -22,7 +22,7 @@ class CartController extends Controller
                 'qty' => '1',
                 'price' => $product->price,
                 'weight' => '1',
-                'options' => ['path'=>$product->image_path, 'size' =>'large','medium','small']
+                'options' => ['path'=>$product->image_path, 'size' =>$product->size, 'user_id'=>Auth::id() ,'quantity'=>1]
                 ]
             ]);
         
@@ -71,7 +71,7 @@ class CartController extends Controller
      */
     public function store(Request $request, CartModel $cart)
     {
-        //
+        
     }
 
     /**

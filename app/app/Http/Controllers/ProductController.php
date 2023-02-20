@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Cart;
 use App\Product;
 use App\Like;
+use App\Order;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
@@ -69,6 +71,7 @@ class ProductController extends Controller
 
         return view('product_detail',compact('product'));
     }
+    
 
     public function search(Request $request)
     {
@@ -91,6 +94,24 @@ class ProductController extends Controller
         }
 
         return view('search', compact('keyword', 'products'));
+    }
+
+    public function cartstore()
+    {
+    //     $carts = Cart::content();
+    //     dd($carts);
+    //     //$cartsをとってくる
+    //     //foraechで回す
+    //     //カートの中身がゼロ
+    // foreach($carts as $cart)
+
+    //     $cart->user_id=Auth::id();
+    //     $cart->quantity=$carts->quantity;
+    //     $cart->order_id=$carts->product_id;
+
+    //     $cart->save();
+        
+    //     return view('cart_complete');
     }
 
 
@@ -182,3 +203,5 @@ class ProductController extends Controller
         //
     }
 }
+
+//
