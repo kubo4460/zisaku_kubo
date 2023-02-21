@@ -22,14 +22,14 @@ class ProductController extends Controller
         // ユーザの投稿の一覧を作成日時の降順で取得
         //withCount('テーブル名')とすることで、リレーションの数も取得できます。
         $products = Product::withCount('likes')->orderBy('created_at', 'desc')->paginate(10);
-        $like = new Like;
+        $like_model = new Like;
 
         $data = [
                 'products' => $products,
-                'like'=>$like,
+                'like'=>$like_model,
             ];
 
-        return view('product.index', $data);
+        return view('product.index',compact('data','like_model'));
     }
 
     public function ajaxlike(Request $request)
@@ -46,30 +46,25 @@ class ProductController extends Controller
         } else {
             //空（まだ「いいね」していない）ならlikesテーブルに新しいレコードを作成する
             $like = new Like;
-            $like->post_id = $request->post_id;
+            $like->product_id = $request->product_id;
             $like->user_id = Auth::user()->id;
             $like->save();
         }
 
-        //loadCountとすればリレーションの数を○○_countという形で取得できる（今回の場合はいいねの総数）
-        $productLikesCount = $product->loadCount('likes')->likes_count;
+        
 
-        //一つの変数にajaxに渡す値をまとめる
-        //今回ぐらい少ない時は別にまとめなくてもいいけど一応。笑
-        $json = [
-            'productLikesCount' => $productLikesCount,
-        ];
         //下記の記述でajaxに引数の値を返す
-        return response()->json($json);
+        return response()->json();
     }
 
 
     public function productdetail($id)
     {
 
+        $like_model= new Like;
         $product = Product::find($id);
 
-        return view('product_detail',compact('product'));
+        return view('product_detail',compact('product', 'like_model'));
     }
     
 
@@ -98,20 +93,7 @@ class ProductController extends Controller
 
     public function cartstore()
     {
-    //     $carts = Cart::content();
-    //     dd($carts);
-    //     //$cartsをとってくる
-    //     //foraechで回す
-    //     //カートの中身がゼロ
-    // foreach($carts as $cart)
-
-    //     $cart->user_id=Auth::id();
-    //     $cart->quantity=$carts->quantity;
-    //     $cart->order_id=$carts->product_id;
-
-    //     $cart->save();
-        
-    //     return view('cart_complete');
+        //
     }
 
 

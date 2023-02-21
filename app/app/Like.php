@@ -19,4 +19,9 @@ class Like extends Model
     {
         return $this->belongsTo('App\Product');
     }
+
+    public function like_exist($user_id,$product_id)
+    {
+        return $this->where('user_id',$user_id)->where('product_id',$product_id)->exists();
+    }
 }

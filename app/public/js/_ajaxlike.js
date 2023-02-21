@@ -3,6 +3,7 @@ $(function () {
     var likeProductId;
     
     like.on('click', function () {
+
         var $this = $(this);
         likeProductId = $this.data('productid');
         $.ajax({
@@ -18,12 +19,9 @@ $(function () {
     
             // Ajaxリクエストが成功した場合
             .done(function (data) {
-    //lovedクラスを追加
+                //lovedクラスを追加
                 $this.toggleClass('loved'); 
-    
-    //.likesCountの次の要素のhtmlを「data.postLikesCount」の値に書き換える
-                $this.next('.likesCount').html(data.productLikesCount); 
-    
+                console.log('成功');
             })
             // Ajaxリクエストが失敗した場合
             .fail(function (data, xhr, err) {

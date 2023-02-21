@@ -24,14 +24,6 @@ Route::get('admin3', 'AdminController@adminuserlist')->name('admin.userlist');
 Route::get('/product/{id}', 'ProductController@productdetail')->name('product.detail');
 Route::get('search', 'ProductController@search')->name('search.add');
 
-//カート全削除
-Route::get('/cart/reset', 'CartController@reset');
-//アイテム1つ削除
-Route::get('/cart/remove/{rowId}', 'CartController@remove')->name('cart.destroy');
-Route::get('/productToCart/{product_id}', 'CartController@productToCart')->name('cart.add');
-Route::get('/cart', 'CartController@ToCart')->name('cart.show');
-Route::get('/', 'PostsController@index')->name('posts.index');
-Route::get('cart1', 'ProductController@cartstore')->name('cart.comp');
 
 //ログイン中のユーザーのみアクセス可能
 Route::group(['middleware' => ['auth']], function () {
@@ -40,22 +32,31 @@ Route::group(['middleware' => ['auth']], function () {
 
 });
 
+Route::get('/', 'HomeController@index')->name('home');
 
+//ユーザー
 Route::group(['middleware' => 'auth', 'can:user-higher'], function () {
     // Route::resource('/','UserController');
-    Route::get('/home', 'HomeController@index')->name('home');
     Route::resource('account', 'AccountController');
     Route::resource('users', 'UserController');
     // Route::resource('account', 'AccountController');
     Route::resource('information', 'InformationController');
     Route::resource('order', 'OrderController');
+    //カート全削除
+    Route::get('/cart/reset', 'CartController@reset');
+    //アイテム1つ削除
+    Route::get('/cart/remove/{rowId}', 'CartController@remove')->name('cart.destroy');
+    Route::get('/productToCart/{product_id}', 'CartController@productToCart')->name('cart.add');
+    Route::get('/cart', 'CartController@ToCart')->name('cart.show');
+    Route::post('/', 'ProductController@index')->name('product.index');
+    Route::get('cart1', 'ProductController@cartstore')->name('cart.comp');
+
 });
 
 // 管理者以上
 
 Route::group(['middleware' => 'auth', 'can:admin-higher'], function () {
 
-    Route::get('/', 'HomeController@index')->name('home');
     Route::resource('users', 'UserController');
     Route::resource('account', 'AccountController');
     Route::resource('information', 'InformationController');
