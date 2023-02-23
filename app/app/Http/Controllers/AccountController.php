@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Account;
+use App\Order;
+use App\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -81,14 +83,14 @@ class AccountController extends Controller
      */
     public function update(Request $request, Account $account)
     {
-
+        $orders = Order::all();
         $account->name = $request->name;
         $account->post = $request->post;
         $account->address = $request->address;
         $account->tel = $request->tel;
 
         $account->save();
-        return view('accounts', compact('account'));
+        return view('accounts', compact('account','orders'));
     }
 
     /**

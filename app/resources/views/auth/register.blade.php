@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Register') }}</div>
+                <div class="card-header">{{ __('新規会員登録') }}</div>
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('register') }}">
@@ -58,39 +58,6 @@
                             </div>
                         </div>
                         
-                        <!-- <div class="form-group row">
-                        <label for="year" class="col-md-4 col-form-label text-md-right">生年月日</label>
-                                
-                                @csrf
-                                <select id="year" name="year">
-                                    <?php $years = array_reverse(range(today()->year - 100, today()->year)); ?>
-                                    @foreach($years as $year)
-                                        <option value="{{ $year }}" {{ old('year') == $year ? 'selected' : '' }} >{{ $year }}</option>
-                                    @endforeach
-                                </select>
-                                <label for="year">年</label>
-                                
-                                <select id="month" name="month">
-                                    
-                                    @foreach(range(1, 12) as $month)
-                                        <option
-                                        value="{{ $month }}" {{ old('month') == $month ? 'selected' : '' }}>{{ $month }}</option>
-                                    @endforeach
-                                </select>
-                                <label for="month">月</label>
-
-                                <select id="day" name="day">
-                                    
-                                    @foreach(range(1, 31) as $day)
-                                        <option
-                                        value="{{ $day }}" {{ old('days') == $day ? 'selected' : '' }}>{{ $day }}</option>
-                                    @endforeach
-                                </select>
-                                <label for="day">日</label>
-                            </form>
-                        
-                        </div> -->
-
                         <div class="form-group row">
                             <label for="password" class="col-md-4 col-form-label text-md-right">パスワード</label>
 

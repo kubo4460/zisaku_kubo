@@ -16,11 +16,14 @@ use App\Http\Controllers\CartController;
 
 
 Auth::routes();
+Route::get('/', 'HomeController@index')->name('home');
 Route::resource('admin', 'AdminController');
 
 Route::get('admin1', 'AdminController@adminuser')->name('admin.user');
 Route::get('admin2', 'AdminController@adminitem')->name('admin.item');
 Route::get('admin3', 'AdminController@adminuserlist')->name('admin.userlist');
+Route::get('admin4', 'AdminController@adminsales')->name('admin.sales');
+Route::get('admin5', 'AdminController@admininformation')->name('admin.information');
 Route::get('/product/{id}', 'ProductController@productdetail')->name('product.detail');
 Route::get('search', 'ProductController@search')->name('search.add');
 
@@ -32,7 +35,7 @@ Route::group(['middleware' => ['auth']], function () {
 
 });
 
-Route::get('/', 'HomeController@index')->name('home');
+
 
 //ユーザー
 Route::group(['middleware' => 'auth', 'can:user-higher'], function () {

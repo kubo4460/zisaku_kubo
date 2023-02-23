@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\User;
+use App\Order;
 
 
 
@@ -51,7 +52,8 @@ class UserController extends Controller
      */
     public function show(User $user)
     {
-        return view('accounts',compact('user'));
+        $orders= Order::all();
+        return view('accounts',compact('user','orders'));
     }
 
     /**

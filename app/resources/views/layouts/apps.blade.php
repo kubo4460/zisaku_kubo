@@ -39,76 +39,82 @@
                 <ul class="navbar-nav ml-auto">
                     <!-- Authentication Links -->
                     @guest
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('login') }}">{{ __('ログイン') }}</a>
+                    <a href="{{ route('information.create') }}" class="text-secondary ">お問い合わせ</a>
+
+                    <a class="nav-link" href="{{ route('login') }}">
+                        <i class="far fa-user"></i>
+                    </a>
+                    <a href="{{ route('home') }}" class="text-danger">
+                        <i class="fas fa-home fa-2x"></i>
+                    </a>
+
+                    <form action="{{ route('search.add') }} " method="get">
+                        @csrf
+                        <div class="input-group">
+                            <input type="text" name="keyword" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1">
+                            <div class="">
+                                <button class="btn btn-light" type="submit"><i class="fas fa-search"></i></button>
+                            </div>
+                        </div>
+                    </form>
+
+                    <a href="{{ route('cart.show') }}" class="btn btn-light">
+                        <i class="fas fa-shopping-cart"></i>
+                    </a>
+
                     </li>
                     @if (Route::has('register'))
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('register') }}">{{ __('新規会員登録') }}</a>
+                        <a class="nav-link" href="{{ route('register') }}">{{ __('') }}</a>
                     </li>
                     @endif
                     @else
-                    <li class="nav-item dropdown">
-                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                            {{ Auth::user()->name }} <span class="caret"></span>
-                        </a>
+                    @can('user-higher')
+                    <a href="{{ route('information.create') }}" class="text-secondary ">お問い合わせ</a>
+                    <a class="btn btn-light" href="{{ route('users.show', Auth::user()->id) }}">
+                        <i class="far fa-user"></i>
+                    </a>
+                    <a href="{{ route('home') }}" class="text-danger">
+                        <i class="fas fa-home fa-2x"></i>
+                    </a>
 
+                    <form action="{{ route('search.add') }} " method="get">
+                        @csrf
+                        <div class="input-group">
+                            <input type="text" name="keyword" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1">
+                            <div class="">
+                                <button class="btn btn-light" type="submit"><i class="fas fa-search"></i></button>
+                            </div>
+                        </div>
+                    </form>
 
-                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="{{ route('users.show', Auth::user()->id) }}">
-                                マイページ
-                            </a>
-                            @can('admin-higher')
-                                <a href="{{ route('logout') }}" class="text-secondary pt-2" onclick="event.preventDefault();
+                    <a href="{{ route('cart.show') }}" class="btn btn-light">
+                        <i class="fas fa-shopping-cart"></i>
+                    </a>
+
+                    @elsecan('admin-higher')
+                    <a href="{{ route('home') }}" class="text-danger">
+                        <i class="fas fa-home fa-2x"></i>
+                    </a>
+                    <a href="{{ route('logout') }}" class="text-secondary pt-2" onclick="event.preventDefault();
                                                     document.getElementById('logout-form').submit();">
-                                    {{ __('ログアウト') }}
-                                </a>
-                            @endcan
+                        {{ __('ログアウト') }}
+                    </a>
+                    @endcan
 
-                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                @csrf
-                            </form>
-                        </div>
-                    </li>
-                    @endguest
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                        @csrf
+                    </form>
                 </ul>
-
-
-                <a href="{{ route('home') }}" class="text-secondary">HOME</a></li>
-
-                <form action="{{ route('search.add') }} " method="get">
-                    @csrf
-                    <div class="input-group">
-                        <input type="text" name="keyword" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1">
-                        <div class="">
-                            <button class="btn btn-secondary" type="submit">🔍</button>
-                        </div>
-                    </div>
-                </form>
-
-                <a href="{{ route('cart.show') }}">
-                    🛒
-                </a>
-
-
-
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav mr-auto">
-
-                    </ul>
-
-
-                </div>
             </div>
+            @endguest
         </nav>
-
-        <main class="py-4">
-            @yield('content')
-        </main>
-        <a href="{{ route('information.create') }}" class="text-secondary pt-5">お問い合わせ</a></li>
-        @yield('footer')
     </div>
+
+    <main class="py-4">
+        @yield('content')
+    </main>
+
 </body>
 
 </html>

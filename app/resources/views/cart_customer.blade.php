@@ -15,7 +15,7 @@
             <td>{{$cart->name}}</td>
             <td>{{$cart->price}}円</td>
 
-            <td><a href="{{ route('cart.destroy',['rowId'=>$cart->rowId]) }}"><button class="uk-button uk-button-danger uk-button">削除</button></td>
+            <td><a href="{{ route('cart.destroy',['rowId'=>$cart->rowId]) }}"><button class="btn btn-dark uk-button">削除</button></td>
         </tr>
         <?php $total +=  $cart->price ?>
         @endforeach
@@ -33,7 +33,7 @@
                     <input type="hidden" name="size[]" value="{{$cart->options->size}}">
                     <input type="hidden" name="price[]" value="{{$cart->price}}">
                     @endforeach
-                    <button type="submit" class="btn btn-primary">決済</button>
+                    <button type="submit" class="btn btn-dark">決済</button>
                 </form>
             </td>
         </tr>
@@ -41,7 +41,7 @@
             <td></td>
             <td></td>
             <td>
-            <td><a href="/cart/reset"><button class="uk-button uk-button-danger uk-button">カート全削除</button></a></td>
+            <td><a href="/cart/reset"><button class="btn btn-dark uk-button">カート全削除</button></a></td>
             </td>
         </tr>
     </tbody>

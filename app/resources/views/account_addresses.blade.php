@@ -58,15 +58,15 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="formGroupExampleInput2">郵便番号</label>
-                                    <input type="post" name="post" class="form-control" id="formGroupExampleInput2" placeholder="郵便番号">
+                                    <input type="post" name="post" value="{{ $account->post }}" class="form-control" id="formGroupExampleInput2" placeholder="郵便番号">
                                 </div>
                                 <div class="form-group">
                                     <label for="formGroupExampleInput">住所</label>
-                                    <input type="address" name="address" class="form-control" id="formGroupExampleInput" placeholder="住所">
+                                    <input type="address" name="address" value="{{ $account->address }}" class="form-control" id="formGroupExampleInput" placeholder="住所">
                                 </div>
                                 <div class="form-group">
                                     <label for="formGroupExampleInput2">電話番号</label>
-                                    <input type="tel" name="tel" class="form-control" id="formGroupExampleInput2" placeholder="電話番号">
+                                    <input type="tel" name="tel" value="{{ $account->tel }}" class="form-control" id="formGroupExampleInput2" placeholder="電話番号">
                                 </div>
                             </div>
                             <div class="modal-footer">

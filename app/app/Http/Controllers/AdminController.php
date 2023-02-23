@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Account;
 use App\Admin;
+use App\Information;
+use App\Order;
 use Illuminate\Http\Request;
 use App\Product;
 use App\User;
@@ -30,8 +32,22 @@ class AdminController extends Controller
     {
         return view('admin_item_list');
     }
+    public function adminsales()
+    {
+        $orders = new Order;
+        $sumorders = $orders->selectRaw('SUM(price) AS total')->get();
+        $numberorders = $orders->selectRaw('SUM(quantity) AS totals')->get();
+
+        return view ('admin_sales',compact('sumorders','numberorders'));
+
+    }
+    public function admininformation()
+    {
+        $informations = Information::all();
 
 
+        return view ('admin_information',compact('informations'));
+    }
     /**
      * Show the form for creating a new resource.
      *

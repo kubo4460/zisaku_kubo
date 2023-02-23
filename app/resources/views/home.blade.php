@@ -8,6 +8,8 @@
             <ul class="list-group">
                 <a href="{{ route('admin.user') }}" class="text-secondary pt-5">会員管理</a>
                 <a href="{{ route('admin.item') }}" class="text-secondary pt-2">商品管理</a>
+                <a href="{{ route('admin.sales') }}" class="text-secondary pt-2">売上管理</a>
+                <a href="{{ route('admin.information') }}" class="text-secondary pt-2">お問い合わせ一覧</a>
             </ul>
         </div>
     </div>
@@ -15,7 +17,9 @@
 
 
     @cannot('admin-higher')
-        <div class="container d-flex flex-wrap">
+
+        <div class="container d-flex flex-wrap ">
+        <img class= "align-items-center" src="{{ asset('storage/image/naga.webp') }}" width="1200" height="500">
             @foreach ($products as $product)
             <div class="w-25">
                 <div class="col text-center p-4">
@@ -39,6 +43,7 @@
                 </div>
             </div>
             @endforeach
+
         </div>
     @endcan
 @endsection

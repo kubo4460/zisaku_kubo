@@ -10930,6 +10930,7 @@ a.text-dark:focus {
     color: inherit;
     border-color: #dee2e6;
   }
+
 }
 .fa-heart {
   color: gray;
@@ -10937,4 +10938,5 @@ a.text-dark:focus {
 .loved .fa-heart {
   color: red;
 }
+
 
