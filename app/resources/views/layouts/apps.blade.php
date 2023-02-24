@@ -39,7 +39,6 @@
                 <ul class="navbar-nav ml-auto">
                     <!-- Authentication Links -->
                     @guest
-                    <a href="{{ route('information.create') }}" class="text-secondary ">お問い合わせ</a>
 
                     <a class="nav-link" href="{{ route('login') }}">
                         <i class="far fa-user"></i>
