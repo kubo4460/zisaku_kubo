@@ -7,7 +7,7 @@
             <ul class="list-group">
                 <a href="{{ route('users.show', Auth::id()) }}" class="text-secondary pt-5">購入履歴</a>
                 <a href="{{ route('users.edit', Auth::id()) }}" class="text-secondary pt-2">配送先住所の閲覧/編集</a>
-                <a href="" class="text-secondary pt-2">ウィッシュリスト</a>
+                <a href="{{ route('like.index')}}" class="text-secondary pt-2">ウィッシュリスト</a>
                 <a href="{{ route('logout') }}" class="text-secondary pt-2" onclick="event.preventDefault();
                                                     document.getElementById('logout-form').submit();">
                     {{ __('ログアウト') }}

@@ -17,11 +17,12 @@ class Like extends Model
 
     public function products()
     {
-        return $this->belongsTo('App\Product');
+        return $this->belongsTo('App\Product','product_id','id');
     }
 
     public function like_exist($user_id,$product_id)
     {
         return $this->where('user_id',$user_id)->where('product_id',$product_id)->exists();
     }
+
 }

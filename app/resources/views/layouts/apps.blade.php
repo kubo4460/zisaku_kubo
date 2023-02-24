@@ -62,7 +62,7 @@
                         <i class="fas fa-shopping-cart"></i>
                     </a>
 
-                    </li>
+
                     @if (Route::has('register'))
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('register') }}">{{ __('') }}</a>
@@ -70,27 +70,33 @@
                     @endif
                     @else
                     @can('user-higher')
-                    <a href="{{ route('information.create') }}" class="text-secondary ">お問い合わせ</a>
-                    <a class="btn btn-light" href="{{ route('users.show', Auth::user()->id) }}">
-                        <i class="far fa-user"></i>
-                    </a>
-                    <a href="{{ route('home') }}" class="text-danger">
-                        <i class="fas fa-home fa-2x"></i>
-                    </a>
 
-                    <form action="{{ route('search.add') }} " method="get">
-                        @csrf
-                        <div class="input-group">
-                            <input type="text" name="keyword" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1">
-                            <div class="">
-                                <button class="btn btn-light" type="submit"><i class="fas fa-search"></i></button>
+                    <div class="col-2">
+                        <a class="btn btn-light" href="{{ route('users.show', Auth::user()->id) }}">
+                            <i class="far fa-user"></i>
+                        </a>
+                    </div>
+                    <div class="col-2">
+                        <a href="{{ route('home') }}" class="text-danger">
+                            <i class="fas fa-home fa-2x"></i>
+                        </a>
+                    </div>
+                    <div class="col-7">
+                        <form action="{{ route('search.add') }} " method="get">
+                            @csrf
+                            <div class="input-group">
+                                <input type="text" name="keyword" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1">
+                                <div class="">
+                                    <button class="btn btn-light" type="submit"><i class="fas fa-search"></i></button>
+                                </div>
                             </div>
-                        </div>
-                    </form>
-
-                    <a href="{{ route('cart.show') }}" class="btn btn-light">
-                        <i class="fas fa-shopping-cart"></i>
-                    </a>
+                        </form>
+                    </div>
+                    <div class="col-2">
+                        <a href="{{ route('cart.show') }}" class="btn btn-light">
+                            <i class="fas fa-shopping-cart"></i>
+                        </a>
+                    </div>
 
                     @elsecan('admin-higher')
                     <a href="{{ route('home') }}" class="text-danger">
@@ -114,6 +120,7 @@
     <main class="py-4">
         @yield('content')
     </main>
+    <a href="{{ route('information.create') }}" class="text-secondary ">お問い合わせ</a>
 
 </body>
 
