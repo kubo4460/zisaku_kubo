@@ -6,9 +6,7 @@ use Illuminate\Http\Request;
 
 use App\User;
 use App\Order;
-
-
-
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
@@ -52,7 +50,8 @@ class UserController extends Controller
      */
     public function show(User $user)
     {
-        $orders= Order::all();
+        $orders= Order::where('user_id', Auth::id())->get();
+
         return view('accounts',compact('user','orders'));
     }
 

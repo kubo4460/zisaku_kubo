@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Account;
+use App\Http\Requests\UserForm;
 use App\Order;
 use App\Product;
 use Illuminate\Http\Request;
@@ -37,7 +38,7 @@ class AccountController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(UserForm $request)
     {
         $account = new Account;
         $account->user_id=Auth::id();

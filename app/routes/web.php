@@ -18,12 +18,6 @@ use App\Http\Controllers\CartController;
 Auth::routes();
 Route::get('/', 'HomeController@index')->name('home');
 Route::resource('admin', 'AdminController');
-Route::resource('like', 'LikeController');
-Route::resource('account', 'AccountController');
-Route::resource('users', 'UserController');
-Route::resource('information', 'InformationController');
-Route::resource('order', 'OrderController');
-Route::resource('product', 'ProductController');
 
 Route::get('admin1', 'AdminController@adminuser')->name('admin.user');
 Route::get('admin2', 'AdminController@adminitem')->name('admin.item');
@@ -38,14 +32,20 @@ Route::get('search', 'ProductController@search')->name('search.add');
 Route::group(['middleware' => ['auth']], function () {
     //「ajaxlike.jsファイルのurl:'ルーティング'」に書くものと合わせる。
     Route::post('ajaxlike', 'ProductController@ajaxlike')->name('product.ajaxlike');
+
 });
 
 
 
 //ユーザー
 Route::group(['middleware' => 'auth', 'can:user-higher'], function () {
-
-
+    // Route::resource('/','UserController');
+    Route::resource('account', 'AccountController');
+    Route::resource('users', 'UserController');
+    // Route::resource('account', 'AccountController');
+    Route::resource('information', 'InformationController');
+    Route::resource('order', 'OrderController');
+    Route::resource('like', 'likeController');
     //カート全削除
     Route::get('/cart/reset', 'CartController@reset');
     //アイテム1つ削除
@@ -54,12 +54,17 @@ Route::group(['middleware' => 'auth', 'can:user-higher'], function () {
     Route::get('/cart', 'CartController@ToCart')->name('cart.show');
     Route::post('/', 'ProductController@index')->name('product.index');
     Route::get('cart1', 'ProductController@cartstore')->name('cart.comp');
+
 });
 
 // 管理者以上
 
 Route::group(['middleware' => 'auth', 'can:admin-higher'], function () {
 
-
-
+    Route::resource('users', 'UserController');
+    Route::resource('account', 'AccountController');
+    Route::resource('information', 'InformationController');
+    Route::resource('product', 'ProductController');
 });
+
+

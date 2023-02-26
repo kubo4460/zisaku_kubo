@@ -25,79 +25,82 @@
 
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
-            <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
-
-                </a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-
-
-                <!-- Right Side Of Navbar -->
-                <ul class="navbar-nav ml-auto">
-                    <!-- Authentication Links -->
-                    @guest
-
-                    <a class="nav-link" href="{{ route('login') }}">
-                        <i class="far fa-user"></i>
-                    </a>
-                    <a href="{{ route('home') }}" class="text-danger">
-                        <i class="fas fa-home fa-2x"></i>
-                    </a>
-
-                    <form action="{{ route('search.add') }} " method="get">
-                        @csrf
-                        <div class="input-group">
-                            <input type="text" name="keyword" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1">
-                            <div class="">
-                                <button class="btn btn-light" type="submit"><i class="fas fa-search"></i></button>
-                            </div>
-                        </div>
-                    </form>
-
-                    <a href="{{ route('cart.show') }}" class="btn btn-light">
-                        <i class="fas fa-shopping-cart"></i>
-                    </a>
-
-
-                    @if (Route::has('register'))
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('register') }}">{{ __('') }}</a>
-                    </li>
-                    @endif
-                    @else
-                    @can('user-higher')
-
-                    <div class="col-2">
-                        <a class="btn btn-light" href="{{ route('users.show', Auth::user()->id) }}">
+        <nav class="bg-white shadow-sm">
+            <!-- Right Side Of Navbar -->
+            <ul class="navbar-nav ml-auto">
+                <!-- Authentication Links -->
+                @guest
+                <div class="d-flex justify-content-around py-3 px-3">
+                    <div class="col">
+                        <a class="btn btn-light" href="{{ route('login') }}">
                             <i class="far fa-user"></i>
                         </a>
                     </div>
-                    <div class="col-2">
+                    <div class="col">
                         <a href="{{ route('home') }}" class="text-danger">
                             <i class="fas fa-home fa-2x"></i>
                         </a>
                     </div>
-                    <div class="col-7">
-                        <form action="{{ route('search.add') }} " method="get">
-                            @csrf
-                            <div class="input-group">
-                                <input type="text" name="keyword" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1">
-                                <div class="">
-                                    <button class="btn btn-light" type="submit"><i class="fas fa-search"></i></button>
+                    <div class="row">
+                        <div class="col-8">
+                            <form action="{{ route('search.add') }} " method="get">
+                                @csrf
+                                <div class="input-group">
+                                    <input type="text" name="keyword" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1">
+                                    <div class="">
+                                        <button class="btn btn-light" type="submit"><i class="fas fa-search"></i></button>
+                                    </div>
                                 </div>
-                            </div>
-                        </form>
+                            </form>
+                        </div>
+                        <div class="col">
+                            <a href="{{ route('cart.show') }}" class="btn btn-light">
+                                <i class="fas fa-shopping-cart"></i>
+                            </a>
+                        </div>
                     </div>
-                    <div class="col-2">
-                        <a href="{{ route('cart.show') }}" class="btn btn-light">
-                            <i class="fas fa-shopping-cart"></i>
+                </div>
+
+
+
+                @if (Route::has('register'))
+                <a class="nav-link" href="{{ route('register') }}">{{ __('') }}</a>
+                @endif
+                @else
+                @can('user-higher')
+                <div class="d-flex justify-content-around py-3 px-3">
+                    <div class="col">
+                        <a class="btn btn-light" href="{{ route('users.show', Auth::user()->id) }}">
+                            <i class="far fa-user"></i>
                         </a>
                     </div>
+                    <div class="col">
+                        <a href="{{ route('home') }}" class="text-danger">
+                            <i class="fas fa-home fa-2x"></i>
+                        </a>
+                    </div>
+                    <div class="row">
+                        <div class="col-8">
+                            <form action="{{ route('search.add') }} " method="get">
+                                @csrf
+                                <div class="input-group">
+                                    <input type="text" name="keyword" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1">
+                                    <div class="">
+                                        <button class="btn btn-light" type="submit"><i class="fas fa-search"></i></button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="col">
+                            <a href="{{ route('cart.show') }}" class="btn btn-light">
+                                <i class="fas fa-shopping-cart"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
 
-                    @elsecan('admin-higher')
+                @elsecan('admin-higher')
+                <div class="d-flex justify-content-around py-3 px-3">
                     <a href="{{ route('home') }}" class="text-danger">
                         <i class="fas fa-home fa-2x"></i>
                     </a>
@@ -105,13 +108,14 @@
                                                     document.getElementById('logout-form').submit();">
                         {{ __('ログアウト') }}
                     </a>
-                    @endcan
+                </div>
+                @endcan
 
-                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                        @csrf
-                    </form>
-                </ul>
-            </div>
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                    @csrf
+                </form>
+            </ul>
+
             @endguest
         </nav>
     </div>

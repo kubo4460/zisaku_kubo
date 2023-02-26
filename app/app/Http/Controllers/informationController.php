@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\InformationForm;
 use App\Information;
 use Illuminate\Http\Request;
 
@@ -35,7 +36,7 @@ class InformationController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, Information $information)
+    public function store(InformationForm $request, Information $information)
     {
         $information = new Information;
 
