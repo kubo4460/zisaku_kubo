@@ -74,7 +74,7 @@
                             <i class="far fa-user"></i>
                         </a>
                     </div>
-                    <div class="col">
+                    <div class="col-4">
                         <a href="{{ route('home') }}" class="text-danger">
                             <i class="fas fa-home fa-2x"></i>
                         </a>

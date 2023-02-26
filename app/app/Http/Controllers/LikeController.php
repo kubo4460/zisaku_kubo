@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Like;
 use App\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class LikeController extends Controller
 {
@@ -15,7 +16,7 @@ class LikeController extends Controller
      */
     public function index()
     {
-        $likes= Like::all();
+        $likes=Like::where('user_id', Auth::id())->get();
 
         return view('wishlist',compact('likes'));
     }
@@ -49,7 +50,7 @@ class LikeController extends Controller
      */
     public function show(Like $like)
     {
-
+        //
     }
 
     /**
