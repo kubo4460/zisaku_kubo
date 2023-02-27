@@ -30,7 +30,7 @@
             <ul class="navbar-nav ml-auto">
                 <!-- Authentication Links -->
                 @guest
-                <div class="d-flex justify-content-around py-3 px-3">
+                <div class="d-flex justify-content-around py-1 px-2">
                     <div class="col">
                         <a class="btn btn-light" href="{{ route('login') }}">
                             <i class="far fa-user"></i>
@@ -68,7 +68,7 @@
                 @endif
                 @else
                 @can('user-higher')
-                <div class="d-flex justify-content-around py-3 px-3">
+                <div class="d-flex justify-content-around py-1 px-2">
                     <div class="col">
                         <a class="btn btn-light" href="{{ route('users.show', Auth::user()->id) }}">
                             <i class="far fa-user"></i>
@@ -100,7 +100,7 @@
                 </div>
 
                 @elsecan('admin-higher')
-                <div class="d-flex justify-content-around py-3 px-3">
+                <div class="d-flex justify-content-around py-1 px-2">
                     <a href="{{ route('home') }}" class="text-danger">
                         <i class="fas fa-home fa-2x"></i>
                     </a>
@@ -123,8 +123,26 @@
     <main class="py-4">
         @yield('content')
     </main>
-    <a href="{{ route('information.create') }}" class="text-secondary ">お問い合わせ</a>
 
+    <div class="text-center">
+        <a href="{{ route('home') }}" class="h4 text-secondary">
+            KUBO MADE ONLINE STORE
+        </a>
+    </div>
+    <div class="col-3">
+        <a href="{{ route('information.create') }}" class="h5 text-secondary ">お問い合わせ</a>
+    </div>
+    <div class="text-center">
+        <span class="twitter">
+            <i class="fab fa-2x m-2 fa-twitter"></i>
+        </span>
+        <span class="instagram">
+            <i class="fab fa-2x m-2 fa-instagram"></i>
+        </span>
+        <span class="facebook">
+            <i class="fab fa-2x m-2 fa-facebook"></i>
+        </span>
+    </div>
 </body>
 
 </html>

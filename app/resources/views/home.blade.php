@@ -18,7 +18,7 @@
 
 @cannot('admin-higher')
 <div class="container-fluid d-flex flex-wrap ">
-    <img class="align-items-center" src="{{ asset('storage/image/naga.webp') }}" width="1650" height="500">
+    <img class="align-items-center" src="{{ asset('storage/image/homeimage.webp') }}" width="1640" height="550">
     @foreach ($products as $product)
     <div class="w-25">
         <div class="col text-center p-4">
