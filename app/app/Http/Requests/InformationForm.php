@@ -24,7 +24,6 @@ class InformationForm extends FormRequest
     public function rules()
     {
         return [
-            'type'=>'required|numeric',
             'name'=>'required|string',
             'email'=>'required|string',
             'inquiry'=>'required|string',

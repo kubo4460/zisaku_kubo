@@ -63,6 +63,7 @@
 
 
 
+
                 @if (Route::has('register'))
                 <a class="nav-link" href="{{ route('register') }}">{{ __('') }}</a>
                 @endif
@@ -99,6 +100,8 @@
                     </div>
                 </div>
 
+
+
                 @elsecan('admin-higher')
                 <div class="d-flex justify-content-around py-1 px-2">
                     <a href="{{ route('home') }}" class="text-danger">
@@ -132,17 +135,8 @@
     <div class="col-3">
         <a href="{{ route('information.create') }}" class="h5 text-secondary ">お問い合わせ</a>
     </div>
-    <div class="text-center">
-        <span class="twitter">
-            <i class="fab fa-2x m-2 fa-twitter"></i>
-        </span>
-        <span class="instagram">
-            <i class="fab fa-2x m-2 fa-instagram"></i>
-        </span>
-        <span class="facebook">
-            <i class="fab fa-2x m-2 fa-facebook"></i>
-        </span>
-    </div>
+
+
 </body>
 
 </html>
