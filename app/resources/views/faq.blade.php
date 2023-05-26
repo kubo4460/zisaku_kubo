@@ -14,7 +14,7 @@
                 </h6>
             </div>
 
-            <div id="collapseOne" class="collapse" role="tabpanel" aria-labelledby="headingOne" style="">
+            <div id="collapseOne" class="collapse" role="tabpanel" aria-labelledby="headingOne">
                 <div class="card-body">
                     お支払い方法は、カード決済・GooglePay・ApplePayとなっております。
                     ご注文完了後、お支払い方法の変更は出来ません。
@@ -30,7 +30,7 @@
                     </a>
                 </h6>
             </div>
-            <div id="collapseTwo" class="collapse" role="tabpanel" aria-labelledby="headingTwo" style="">
+            <div id="collapseTwo" class="collapse" role="tabpanel" aria-labelledby="headingTwo">
                 <div class="card-body">
                 日本国内への配送については、送料は1回のご注文につき、全国一律で750円(税込)をいただいております。
                 </div>
@@ -38,6 +38,4 @@
         </div>
     </div>
 </div>
-
-
 @endsection
