@@ -32,16 +32,17 @@
                     商品名：{{$product['title']}}
                 </dt>
                 <dt class="col-sm m-2">
-                    商品説明：{{$product['description']}}
-                </dt>
-                <dt class="col-sm m-2">
                     サイズ：{{$product['size']}}
                 </dt>
                 <dt class="col-sm m-2">
                     ¥{{$product['price']}}円
                 </dt>
                 <button type="submit" class="btn btn-dark btn-lg btn-block mt-5">ADD TO CART</button>
+                <dt class="col-sm m-2">
+                    {{$product['description']}}
+                </dt>
             </form>
+            
         </div>
 
     </div>

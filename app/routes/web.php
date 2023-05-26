@@ -46,6 +46,7 @@ Route::group(['middleware' => 'auth', 'can:user-higher'], function () {
     Route::resource('information', 'InformationController');
     Route::resource('order', 'OrderController');
     Route::resource('like', 'likeController');
+    Route::resource('faq', 'FaqController');
     //カート全削除
     Route::get('/cart/reset', 'CartController@reset');
     //アイテム1つ削除

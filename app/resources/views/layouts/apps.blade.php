@@ -135,6 +135,9 @@
     <div class="col-3">
         <a href="{{ route('information.create') }}" class="h5 text-secondary ">お問い合わせ</a>
     </div>
+    <div class="col-3">
+        <a href="{{ route('faq.index') }}" class="h5 text-secondary ">FAQ</a>
+    </div>
 
 
 </body>

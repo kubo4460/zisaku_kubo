@@ -61,7 +61,7 @@ class InformationController extends Controller
      */
     public function show(Information $information)
     {
-        //
+
     }
 
     /**
